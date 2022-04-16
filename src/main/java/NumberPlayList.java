@@ -37,7 +37,7 @@ public class NumberPlayList {
             System.out.println("method 5 for each lamda value::" + n);
 
         });
-        Function<Integer,Double> toDoubleFunction=Integer::doubleValue;
+        Function<Integer,Double> toDoubleFunction=n->n.doubleValue();
         myNumberList.forEach(n->{
             System.out.println("Method 6 for each lamda function using double value::"+toDoubleFunction.apply(n));
         });

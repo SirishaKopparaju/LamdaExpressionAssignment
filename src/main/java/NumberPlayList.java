@@ -37,14 +37,25 @@ public class NumberPlayList {
         myNumberList.forEach(n -> {
             System.out.println("method 5 for each lamda value::" + n);
 
-        });
+        });//lamda
+        List<Double>doubleList=new ArrayList<Double>();
         Function<Integer,Double> toDoubleFunction=n->n.doubleValue();
-        myNumberList.forEach(n->{
-            System.out.println("Method 6 for each lamda function using double value::"+toDoubleFunction.apply(n));
-        });
         Predicate<Integer> isEvenFunction=n->n>0&&n%2==0;
+        List<Double> evenlist = new ArrayList<Double>();
+        myNumberList.forEach(n->{
+            doubleList.add(toDoubleFunction.apply(n));
+        doubleList.forEach(n1->{
+            if (isEvenFunction.test(n1.intValue()))
+                evenlist.add(n1);
+        });
+                });
+
         myNumberList.forEach(n->{
             System.out.println("method 7 for each value of:" +n +"check even:"+isEvenFunction.test(n));
         });
-    }
+        //java stream
+        myNumberList.stream().forEach(n->{
+            System.out.println(("Method 8 stream for each value::"+n));
+        });
+        }
 }

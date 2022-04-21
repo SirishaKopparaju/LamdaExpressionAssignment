@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Consumer;
@@ -71,5 +72,13 @@ public class NumberPlayList {
                 .findFirst()
                 .orElse(null);
         System.out.println("method 10 first even" + first);
+        Integer min =myNumberList.stream()
+                .filter(isEvenFunction)
+                .min((n1,n2)->n1-n2).orElse(null);
+        System.out.println("method 11 min even"+min);
+        Integer max = myNumberList.stream().filter(isEvenFunction)
+                .max(Comparator.comparing(Integer::intValue))
+                .orElse(null);
+        System.out.println("method 12 max even:"+max);
     }
 }

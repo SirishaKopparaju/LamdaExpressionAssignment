@@ -85,9 +85,13 @@ public class NumberPlayList {
                 .reduce(0,Integer::sum);
         long count = myNumberList.stream().count();
         System.out.println("method 11 avg of"+sum+"/"+count+"="+sum/count);
-        boolean allEven = myNumberList.stream().allMatch(isEvenFunction);
+        boolean allEven = myNumberList.stream().filter(isEvenFunction).allMatch(isEvenFunction);
         boolean oneEven = myNumberList.stream().anyMatch(isEvenFunction);
         boolean noneMultOfSix = myNumberList.stream().noneMatch(i->i>0&&i%6==0);
         System.out.println("allEven:"+allEven+"oneEven:"+oneEven+"noneMultOfSix"+noneMultOfSix);
+        List<Integer> sortedList = myNumberList.stream()
+                .sorted((n1,n2)->n2.compareTo(n1))
+                .collect(Collectors.toList());
+        System.out.println("method 12 sorted list"+sortedList);
     }
 }

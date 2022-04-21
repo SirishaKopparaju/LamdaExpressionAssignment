@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class NumberPlayList {
     public static void main(String[] args) {
@@ -57,5 +58,11 @@ public class NumberPlayList {
         myNumberList.stream().forEach(n->{
             System.out.println(("Method 8 stream for each value::"+n));
         });
-        }
+        //processing stream and apply the operations and store it
+        List<Double> StreamList = myNumberList.stream()
+                                    .filter(isEvenFunction)
+                                    .map(toDoubleFunction)
+                                    .collect(Collectors.toList());
+        System.out.println(("method 9 printing Double list:"+StreamList));
+    }
 }

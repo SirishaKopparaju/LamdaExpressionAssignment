@@ -80,5 +80,10 @@ public class NumberPlayList {
                 .max(Comparator.comparing(Integer::intValue))
                 .orElse(null);
         System.out.println("method 12 max even:"+max);
+        //find sum n avg
+        Integer sum = myNumberList.stream()
+                .reduce(0,Integer::sum);
+        long count = myNumberList.stream().count();
+        System.out.println("method 11 avg of"+sum+"/"+count+"="+sum/count);
     }
 }

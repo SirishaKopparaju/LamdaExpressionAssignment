@@ -39,30 +39,37 @@ public class NumberPlayList {
             System.out.println("method 5 for each lamda value::" + n);
 
         });//lamda
-        List<Double>doubleList=new ArrayList<Double>();
-        Function<Integer,Double> toDoubleFunction=n->n.doubleValue();
-        Predicate<Integer> isEvenFunction=n->n>0&&n%2==0;
+        List<Double> doubleList = new ArrayList<Double>();
+        Function<Integer, Double> toDoubleFunction = n -> n.doubleValue();
+        Predicate<Integer> isEvenFunction = n -> n > 0 && n % 2 == 0;
         List<Double> evenlist = new ArrayList<Double>();
-        myNumberList.forEach(n->{
+        myNumberList.forEach(n -> {
             doubleList.add(toDoubleFunction.apply(n));
-        doubleList.forEach(n1->{
-            if (isEvenFunction.test(n1.intValue()))
-                evenlist.add(n1);
+            doubleList.forEach(n1 -> {
+                if (isEvenFunction.test(n1.intValue()))
+                    evenlist.add(n1);
+            });
         });
-                });
 
-        myNumberList.forEach(n->{
-            System.out.println("method 7 for each value of:" +n +"check even:"+isEvenFunction.test(n));
+        myNumberList.forEach(n -> {
+            System.out.println("method 7 for each value of:" + n + "check even:" + isEvenFunction.test(n));
         });
         //java stream
-        myNumberList.stream().forEach(n->{
-            System.out.println(("Method 8 stream for each value::"+n));
+        myNumberList.stream().forEach(n -> {
+            System.out.println(("Method 8 stream for each value::" + n));
         });
         //processing stream and apply the operations and store it
         List<Double> StreamList = myNumberList.stream()
-                                    .filter(isEvenFunction)
-                                    .map(toDoubleFunction)
-                                    .collect(Collectors.toList());
-        System.out.println(("method 9 printing Double list:"+StreamList));
+                .filter(isEvenFunction)
+                .map(toDoubleFunction)
+                .collect(Collectors.toList());
+        System.out.println(("method 9 printing Double list:" + StreamList));
+
+        //listing the first even number
+        Integer first = myNumberList.stream().filter(isEvenFunction)
+                .peek(n -> System.out.println("peek even number" + n))
+                .findFirst()
+                .orElse(null);
+        System.out.println("method 10 first even" + first);
     }
 }
